@@ -12,7 +12,8 @@ class Guest
                 "address" => result["address"],
                 "city" => result["city"],
                 "state" => result["state"],
-                "zip" => result["zip"].to_i
+                "zip" => result["zip"].to_i,
+                "attending" => result["attending"]
             }
         end
     end
@@ -26,7 +27,8 @@ class Guest
           "address" => results.first["address"],
           "city" => results.first["city"],
           "state" => results.first["state"],
-          "zip" => results.first["zip"].to_i
+          "zip" => results.first["zip"].to_i,
+          "attending" => results.first["attending"]
         }
     end
 
@@ -34,8 +36,8 @@ class Guest
         results = DB.exec(
             <<-SQL
                 INSERT INTO guests (first_name, last_name, address, city, state, zip)
-                VALUES ( '#{opts["first_name"]}', '#{opts["last_name"]}', '#{opts["address"]}', '#{opts["city"]}', '#{opts["state"]}', #{opts["zip"]} )
-                RETURNING id, first_name, last_name, address, city, state, zip;
+                VALUES ( '#{opts["first_name"]}', '#{opts["last_name"]}', '#{opts["address"]}', '#{opts["city"]}', '#{opts["state"]}', #{opts["zip"]}, '#{opts["attending"]}' )
+                RETURNING id, first_name, last_name, address, city, state, zip, attending;
             SQL
         )
         return {
@@ -45,7 +47,8 @@ class Guest
           "address" => results.first["address"],
           "city" => results.first["city"],
           "state" => results.first["state"],
-          "zip" => results.first["zip"].to_i
+          "zip" => results.first["zip"].to_i,
+          "attending" => results.first["attending"]
         }
     end
 
@@ -58,9 +61,9 @@ class Guest
         results = DB.exec(
             <<-SQL
                 UPDATE guests
-                SET first_name='#{opts["first_name"]}', last_name='#{opts["last_name"]}', address='#{opts["address"]}',  city='#{opts["city"]}', state='#{opts["state"]}', zip=#{opts["zip"]}
+                SET first_name='#{opts["first_name"]}', last_name='#{opts["last_name"]}', address='#{opts["address"]}',  city='#{opts["city"]}', state='#{opts["state"]}', zip=#{opts["zip"]}, attending=#{opts["attending"]}
                 WHERE id=#{id}
-                RETURNING id, first_name, last_name, address, city, state, zip;
+                RETURNING id, first_name, last_name, address, city, state, zip, attending;
             SQL
         )
         return {
@@ -70,7 +73,8 @@ class Guest
           "address" => results.first["address"],
           "city" => results.first["city"],
           "state" => results.first["state"],
-          "zip" => results.first["zip"].to_i
+          "zip" => results.first["zip"].to_i,
+          "attending" => results.first["attending"]
         }
     end
 
