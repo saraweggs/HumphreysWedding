@@ -1,4 +1,4 @@
-import Accomodations, { Component } from 'react'
+import React, { Component } from 'react'
 
 class Accomodations extends Component {
   render() {

@@ -1,4 +1,4 @@
-import Guestlist, { Component } from 'react'
+import React, { Component } from 'react'
 
 class Guestlist extends Component {
   render() {

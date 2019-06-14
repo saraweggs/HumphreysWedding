@@ -1,4 +1,4 @@
-import Events, { Component } from 'react'
+import React, { Component } from 'react'
 
 class Events extends Component {
   render() {

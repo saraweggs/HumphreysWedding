@@ -1,4 +1,4 @@
-import Rsvp, { Component } from 'react'
+import React, { Component } from 'react'
 
 class Rsvp extends Component {
   render() {
