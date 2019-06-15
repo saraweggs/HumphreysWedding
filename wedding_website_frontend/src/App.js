@@ -38,27 +38,28 @@ class App extends Component {
           <div>
             <nav>
               <span>
-                <Link to="/location/">Location</Link>
+                <Link to="/" className="nav">Home</Link>
               </span>
               <span>
-                <Link to="/accomodations/">Accomodations</Link>
+                <Link to="/location/" className="nav">Location</Link>
               </span>
               <span>
-                <Link to="/events/">Events</Link>
+                <Link to="/accomodations/" className="nav">Accomodations</Link>
               </span>
               <span>
-                <Link to="/wedding-party/">Wedding Party</Link>
+                <Link to="/events/" className="nav">Events</Link>
               </span>
               <span>
-                <Link to="/registry/">Registry</Link>
+                <Link to="/wedding-party/" className="nav">Wedding Party</Link>
               </span>
               <span>
-                <Link to="/rsvp/">RSVP</Link>
+                <Link to="/registry/" className="nav">Registry</Link>
+              </span>
+              <span>
+                <Link to="/rsvp/" className="nav">RSVP</Link>
               </span>
             </nav>
-            <header>
-            <Link to="/">Callie & Edward</Link>
-            </header>
+
             <Route path="/" exact component={Home} />
             <Route path="/location/" component={Location} />
             <Route path="/accomodations/" component={Accomodations} />
