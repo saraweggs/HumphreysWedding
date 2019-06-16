@@ -5,9 +5,6 @@ class Accomodations extends Component {
     return (
       <React.Fragment>
       <div className="accomodations">
-          <header className="accomodations-header">
-            <img src="https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-9/62221226_10103857552555973_116386685939351552_n.jpg?_nc_cat=108&_nc_oc=AQlBOcajt37qZztuadHAb-pTLslDAs86Q9WVuCg5EgOPrrf0pDqaNxRjohgaYHg1bOg&_nc_ht=scontent-ort2-2.xx&oh=5dfe163f8635e7bdfd0a35b1cdb6cac9&oe=5D7D62F1" />
-          </header>
           <div className="accomodations-main">
             <h1>Rest</h1>
             <span>For your convenience, a preferred rate is available the weekend of our wedding,</span>

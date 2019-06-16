@@ -6,9 +6,6 @@ class Location extends Component {
   render() {
     return (
         <div className="location">
-          <header className="location-header">
-            <img src="http://www.enchantedweddingcompany.com/wp-content/uploads/2017/08/wec8-1024x681.jpg" />
-          </header>
           <div className="location-main">
             <h1>Saint Agnes Catholic Church</h1>
             <p>_____________________________________</p>
