@@ -3,8 +3,9 @@
 /****************************/
 
 body {
-  max-width: 80%;
+  max-width: 90%;
   margin: auto;
+  background-color: #eaf1f6;
 }
 
 /****************************/
@@ -31,6 +32,13 @@ nav {
   color: #9DCEAA;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  height: 630px;
+  width: 100%;
+}
+
 /****************************/
 /*      Home Component      */
 /****************************/
@@ -38,35 +46,26 @@ nav {
 .home {
   font-family: 'Crimson Text', serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-.home-header {
-  font-family: 'Alex Brush', cursive;
-  font-size: 100px;
-  height: 630px;
-  width: 100%;
-  background-image: url('images/lake.jpg');
-  background-repeat: no-repeat;
+.home-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 /****************************/
 /*  Accomodations Component */
 /****************************/
 
-.accomodations-header {
-  display: flex;
-  align-content: center;
-  height: 630px;
-  width: 100%;
-  background-image: url('images/header_pic.jpg');
-  background-repeat: no-repeat;
-}
-
-.accomodations {
+.accomodations-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   font-family: 'Crimson Text', serif;
 }
 
@@ -81,4 +80,20 @@ button {
 button:hover {
   background-color: white;
   color: navy;
+}
+
+/****************************/
+/*    Location Component    */
+/****************************/
+
+.location-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+}
+
+#map {
+  text-align: center;
 }

@@ -10,6 +10,7 @@ import Registry from './components/Registry'
 import Rsvp from './components/Rsvp'
 import WeddingParty from './components/Wedding_Party'
 
+
 class App extends Component {
   constructor(props) {
     super(props)
