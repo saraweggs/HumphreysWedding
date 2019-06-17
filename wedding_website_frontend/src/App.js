@@ -10,12 +10,16 @@ import Registry from './components/Registry'
 import Rsvp from './components/Rsvp'
 import WeddingParty from './components/Wedding_Party'
 
+const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: ''
+      first_name: '',
+      last_name: '',
+      currentUser: '',
+      attending: false
     }
     this.fetchGuests = this.fetchGuests.bind(this)
   }

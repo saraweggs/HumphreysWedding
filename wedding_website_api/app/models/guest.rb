@@ -1,6 +1,14 @@
 class Guest
 
+  if(ENV['DATABASE_URL'])
+    uri = URI.parse(ENV['DATABASE_URL'])
+    DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
+  elsif(ENV['DATABASE_PASSWORD'])
+    DB = PG.connect({:host => "localhost", :port => 5432, :dbname => 'wedding_website_development', :password => ENV['DATABASE_PASSWORD'], :user => "postgres"})
+  else
     DB = PG.connect({:host => "localhost", :port => 5432, :dbname => 'wedding_website_development'})
+  end
+
 
     def self.all
         results = DB.exec("SELECT * FROM guests;")
