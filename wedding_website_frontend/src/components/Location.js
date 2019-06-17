@@ -6,12 +6,12 @@ class Location extends Component {
   render() {
     return (
         <div className="location">
-          <div className="location-main">
-            <h1>Saint Agnes Catholic Church</h1>
+          <div className="main-content">
+            <h1 className="cursive">Saint Agnes Catholic Church</h1>
             <p>_____________________________________</p>
             <span>4807 Staunton Avenue SE</span>
             <span>Charleston, WV 25304</span>
-            <div id="map">
+            <div className="map">
               <MapContainer />
             </div>
           </div>
