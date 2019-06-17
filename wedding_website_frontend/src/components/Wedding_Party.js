@@ -4,7 +4,9 @@ class WeddingParty extends Component {
   render() {
     return (
         <div className="wedding-party">
-          this is the wedding party component
+          <div className="main-content">
+            <h1 className="cursive">Wedding Party</h1>
+          </div>
         </div>
     )
   }

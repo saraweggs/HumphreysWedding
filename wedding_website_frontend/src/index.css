@@ -3,8 +3,24 @@
 /****************************/
 
 body {
-  max-width: 80%;
-  margin: auto;
+  background: url('https://static.aislesociety.com/marry-me-tampa-bay/light-blue-tan-rustic-florida-wedding/thumb_a5f2d41d-a747-381a-ac18-029a47b38c9d.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.main-content {
+  font-family: 'Crimson Text', serif;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  text-align: center;
+  height: 100%;
+}
+
+.cursive {
+  font-family: 'Parisienne', cursive;
+  font-size: 45px;
 }
 
 /****************************/
@@ -20,55 +36,91 @@ nav {
   height: 50px;
   text-decoration: none;
   font-family: 'Crimson Text', serif;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .nav {
   text-decoration: none;
-  color: navy;
+  color: black;
 }
 
 .nav:hover {
-  color: #9DCEAA;
+  text-decoration: underline;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  height: 630px;
+  width: 100%;
 }
 
 /****************************/
 /*      Home Component      */
 /****************************/
 
-.home {
-  font-family: 'Crimson Text', serif;
-  display: flex;
-  justify-content: center;
+.map {
+  background: rgba(255, 255, 255, 0.5);
 }
 
-.home-header {
-  font-family: 'Alex Brush', cursive;
-  font-size: 100px;
-  height: 630px;
+.slider {
+  position: relative;
+  width: 500px;
+  margin: 0 auto;
+  height: 500px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 100px;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 100%;
   width: 100%;
-  background-image: url('images/lake.jpg');
-  background-repeat: no-repeat;
+}
+
+.slide {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.arrow {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform ease-in .1s;
+}
+
+.nextArrow {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  z-index: 999;
+  color: white;
+}
+
+.backArrow {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  z-index: 999;
+  color: white;
+}
+
+.fa-arrow-right:before, .fa-arrow-left:before {
+  color: white;
 }
 
 /****************************/
 /*  Accomodations Component */
 /****************************/
-
-.accomodations-header {
-  display: flex;
-  align-content: center;
-  height: 630px;
-  width: 100%;
-  background-image: url('images/header_pic.jpg');
-  background-repeat: no-repeat;
-}
-
-.accomodations {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: 'Crimson Text', serif;
-}
 
 button {
   padding: 10px;
@@ -82,3 +134,14 @@ button:hover {
   background-color: white;
   color: navy;
 }
+
+/****************************/
+/*    Location Component    */
+/****************************/
+
+
+
+
+/****************************/
+/*     Events Component     */
+/****************************/
