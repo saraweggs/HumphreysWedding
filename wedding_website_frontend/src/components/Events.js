@@ -5,7 +5,7 @@ class Events extends Component {
     return (
         <div className="events">
           <div className="main-content">
-            <h1 className="cursive">Eat, Drink, and be Married</h1>
+            <h1 className="cursive heading">Eat, Drink, and be Married</h1>
             <h3>Rehersal Dinner</h3>
             <span>Edgewood Country Club</span>
             <h3>Wedding Ceremony</h3>

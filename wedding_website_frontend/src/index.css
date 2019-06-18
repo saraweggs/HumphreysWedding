@@ -23,6 +23,10 @@ body {
   font-size: 45px;
 }
 
+.heading{
+  padding-top: 30px;
+}
+
 /****************************/
 /*   Header and Navigation  */
 /****************************/
@@ -87,8 +91,8 @@ header {
 }
 
 .arrow {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,12 +140,48 @@ button:hover {
 }
 
 /****************************/
-/*    Location Component    */
+/*    Registry Component    */
 /****************************/
 
+.logo {
+  width: 30%;
+  height: auto;
+  padding: 25px;
+  margin-bottom: 40px;
+}
 
+.logo:hover {
+  -webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  cursor: pointer;
+}
 
+@-webkit-keyframes shadow-drop-center {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+@keyframes shadow-drop-center {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
 
 /****************************/
-/*     Events Component     */
+/*  Wedding Party Component */
 /****************************/
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  padding: 0 10px 0 10px;
+}
