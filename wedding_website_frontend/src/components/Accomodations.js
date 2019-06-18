@@ -6,7 +6,7 @@ class Accomodations extends Component {
       <React.Fragment>
       <div className="accomodations">
           <div className="main-content">
-            <h1 className="cursive">Rest</h1>
+            <h1 className="cursive heading">Rest</h1>
             <span>For your convenience, a preferred rate is available the weekend of our wedding,</span>
             <span>September 6th - September 8th, 2019.</span>
             <div className="hotel-info">

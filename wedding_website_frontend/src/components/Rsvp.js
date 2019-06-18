@@ -13,18 +13,18 @@ class Rsvp extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(e) {
+  handleSubmit(event) {
+    event.preventDefault()
     this.setState({
-      [e.target.id]: e.target.value
+      first_name: '',
+      last_name: '',
+      current_user: ''
     })
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
+  handleChange(event) {
     this.setState({
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      currentUser: this.state.currentUser
+      [event.target.id]: event.target.value
     })
   }
 
@@ -33,7 +33,7 @@ class Rsvp extends Component {
       <React.Fragment>
         <div className="rsvp">
           <div className="main-content">
-          <h1 className="cursive">RSVP</h1>
+          <h1 className="cursive heading">RSVP</h1>
           <span>To RSVP for our wedding, log in using your first name, last name, & password: Guest</span><br />
             <form onSubmit={this.handleSubmit}>
               First Name:<input type="text" value={this.state.first_name} onChange={this.handleChange} id="first_name"></input><br />
