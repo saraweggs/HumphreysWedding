@@ -16,10 +16,16 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentUser: '',
       first_name: '',
       last_name: '',
-      currentUser: '',
-      attending: false
+      address: '',
+      city: '',
+      state: '',
+      zip: '',
+      attending: false,
+      guests: [],
+      showRsvp: false
     }
   }
 

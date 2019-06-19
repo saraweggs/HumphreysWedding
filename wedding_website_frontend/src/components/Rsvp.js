@@ -27,6 +27,7 @@ class Rsvp extends Component {
     this.updateArray = this.updateArray.bind(this)
     this.handleRsvp = this.handleRsvp.bind(this)
     this.handleDeleteGuest = this.handleDeleteGuest.bind(this)
+    this.addGuestToState = this.addGuestToState.bind(this)
   }
 
   handleSubmit(event) {
@@ -53,19 +54,18 @@ class Rsvp extends Component {
   }
 
   fetchGuests() {
-    fetch(baseAPI + `guests`)
-      .then( data => data.json())
-      .then( jData => {
-        console.log('this is from fetchGuests', jData);
-        this.setState({
-          guests: jData
-        })
-        console.log('this is guests array', this.state.guests);
-      })
-  }
+      fetch(baseAPI + `guests`)
+          .then( data => data.json())
+          .then( jData => {
+              console.log('this is from fetchGuests', jData);
+              this.setState({
+                  guests: jData
+                })
+                  console.log('this is guests array', this.state.guests);
+                })
+              }
 
   handleCreateGuest(guest) {
-    console.log(guest);
     fetch(baseAPI + `guests`, {
       body: JSON.stringify(guest),
       method: 'POST',
@@ -83,9 +83,6 @@ class Rsvp extends Component {
   }
 
   handleDeleteGuest(guestId, arrayIndex, array) {
-    console.log(guestId);
-    console.log(arrayIndex);
-    console.log(array);
     fetch(baseAPI + `guests/` + `${guestId}`, {
       method: 'DELETE'
     })
@@ -93,6 +90,29 @@ class Rsvp extends Component {
         this.removeFromArray(array, arrayIndex)
       })
       .catch(err => console.log(err))
+  }
+
+  handleEditGuest(guestId, arrayIndex, array) {
+    fetch(baseAPI + `guests/` + `${guestId}`, {
+      body: JSON.stringify({
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        address: this.state.address,
+        city: this.state.city,
+        state: this.state.state,
+        zip: this.state.zip
+      }),
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then( updatedGuest => updatedGuest.json())
+    .then( updatedJData => {
+      this.updateArray(updatedJData, 'guests')
+    })
+    .catch( err => console.log('this is err', err))
   }
 
   updateArray(guest, array) {
@@ -108,6 +128,10 @@ class Rsvp extends Component {
         ['guests']: prevState['guests']
       }
     })
+  }
+
+  addGuestToState(event) {
+    
   }
 
   render() {
@@ -151,6 +175,8 @@ class Rsvp extends Component {
                     handleCreateGuest={this.handleCreateGuest}
                     handleChange={this.handleChange}
                     handleDeleteGuest={this.handleDeleteGuest}
+                    handleEditGuest={this.handleEditGuest}
+                    addGuestToState={this.addGuestToState}
                 />
               </div>
               :

@@ -20,26 +20,26 @@ class Guestlist extends Component {
   }
 
   handleSubmit = (e) => {
-   e.preventDefault()
-   this.props.handleCreateGuest(this.state)
-   this.props.fetchGuests()
-   this.clearForm()
-}
+    e.preventDefault()
+    this.props.handleCreateGuest(this.state)
+    this.props.fetchGuests()
+    this.clearForm()
+  }
 
   handleChange = (e) => {
-   this.setState({
-     [e.target.id]: e.target.value
-   })
-}
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
 
   clearForm = () => {
-  this.setState({ first_name: '',
-                  last_name: '',
-                  address: '',
-                  city: '',
-                  state: '',
-                  zip: ''})
-}
+    this.setState({ first_name: '',
+                    last_name: '',
+                    address: '',
+                    city: '',
+                    state: '',
+                    zip: ''})
+    }
 
   render() {
     return (
@@ -77,6 +77,7 @@ class Guestlist extends Component {
                 id="zip"
                 onChange={this.handleChange}/>
             <input type="submit" value="Add Guest" />
+            <button>Edit Guest</button>
           </form>
           <h2>Wedding Guestlist:</h2>
           <div className="table-container">
@@ -99,6 +100,8 @@ class Guestlist extends Component {
                 index={index}
                 guest={guest}
                 handleDeleteGuest={this.props.handleDeleteGuest}
+                handleEditGuest={this.props.handleEditGuest}
+                addGuestToState={this.props.addGuestToState}
               />
             )
           })}
