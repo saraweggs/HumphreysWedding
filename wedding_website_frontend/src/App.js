@@ -21,19 +21,6 @@ class App extends Component {
       currentUser: '',
       attending: false
     }
-    this.fetchGuests = this.fetchGuests.bind(this)
-  }
-
-  fetchGuests() {
-      fetch('http://localhost:3000/guests')
-        .then(data => data.json())
-      .then(guestData => {
-        console.log(guestData);
-      })
-  }
-
-  componentDidMount() {
-      this.fetchGuests()
   }
 
   render() {

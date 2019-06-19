@@ -41,10 +41,11 @@ class Guest
     end
 
     def self.create(opts)
+      p opts
         results = DB.exec(
             <<-SQL
                 INSERT INTO guests (first_name, last_name, address, city, state, zip)
-                VALUES ( '#{opts["first_name"]}', '#{opts["last_name"]}', '#{opts["address"]}', '#{opts["city"]}', '#{opts["state"]}', #{opts["zip"]}, '#{opts["attending"]}' )
+                VALUES ( '#{opts["first_name"]}', '#{opts["last_name"]}', '#{opts["address"]}', '#{opts["city"]}', '#{opts["state"]}', #{opts["zip"]} )
                 RETURNING id, first_name, last_name, address, city, state, zip, attending;
             SQL
         )
