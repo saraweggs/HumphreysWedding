@@ -131,7 +131,7 @@ class Rsvp extends Component {
   }
 
   addGuestToState(event) {
-    
+
   }
 
   render() {
@@ -140,6 +140,7 @@ class Rsvp extends Component {
         <div className="rsvp">
           <div className="main-content">
           <h1 className="cursive heading">RSVP</h1>
+          <img className="eucalyptus" src="https://png2.kisspng.com/sh/283511c8f211fc299e7eacdaec04f5f7/L0KzQYm3U8I5N6dtfZH0aYP2gLBuTgdmbJVuhtk2aX75ecXolPlwdl5nitttZYPwcbrrTfV2a5JxkeJ9dYOwd8b1jvlqNZ5mRddAY3HvicH7lgMuPZJneqduM3XmdLXpWcYvQGM9TasAM0W0RYO5UsI5P2o9UKY8Mj7zfri=/kisspng-wedding-invitation-bridesmaid-eucalyptus-gunnii-ma-eucalyptus-5abb5e3ecddb96.8285953515222287988432.png" />
           <h3>To RSVP for our wedding, log in using your first name, last name, & password: Guest</h3><br />
             <form onSubmit={this.handleSubmit}>
               First Name:<input
