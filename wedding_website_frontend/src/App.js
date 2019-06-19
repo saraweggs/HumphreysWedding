@@ -16,24 +16,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      currentUser: '',
       first_name: '',
       last_name: '',
-      currentUser: '',
-      attending: false
+      address: '',
+      city: '',
+      state: '',
+      zip: '',
+      attending: false,
+      guests: [],
+      showRsvp: false
     }
-    this.fetchGuests = this.fetchGuests.bind(this)
-  }
-
-  fetchGuests() {
-      fetch('http://localhost:3000/guests')
-        .then(data => data.json())
-      .then(guestData => {
-        console.log(guestData);
-      })
-  }
-
-  componentDidMount() {
-      this.fetchGuests()
   }
 
   render() {

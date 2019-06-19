@@ -5,6 +5,7 @@ class Registry extends Component {
     return (
         <div className="main-content">
           <h1 className="cursive heading">Our Registry</h1>
+          <img className="eucalyptus" src="https://png2.kisspng.com/sh/283511c8f211fc299e7eacdaec04f5f7/L0KzQYm3U8I5N6dtfZH0aYP2gLBuTgdmbJVuhtk2aX75ecXolPlwdl5nitttZYPwcbrrTfV2a5JxkeJ9dYOwd8b1jvlqNZ5mRddAY3HvicH7lgMuPZJneqduM3XmdLXpWcYvQGM9TasAM0W0RYO5UsI5P2o9UKY8Mj7zfri=/kisspng-wedding-invitation-bridesmaid-eucalyptus-gunnii-ma-eucalyptus-5abb5e3ecddb96.8285953515222287988432.png" />
           <div className="registry-icons">
             <a target="_blank" href="https://www.williams-sonoma.com/registry/500175007/registry-list.html?cm_ven=WedCh&bnrid=3117550&cm_ite=GiftGiver&cm_pla=WCSearchResults&cm_cat=Registry">
             <img className="logo" src="https://png2.kisspng.com/sh/101db96228a533a1d17ad9d6e3e5659e/L0KzQYm3WMA2N6VqkJH0aYP2gLBuTfxwb5Cyj9t1bHnkfcS0kB9vd55mRdR7YX7nPbzwlPNpbZ8yeud8aX7og8S0kClvbaNskZ9tZYPsd7A0jfFvfZdmeAZAcnWwhLbBlPltbaQyi9HvdD3phcP1TcVjPmdqSqVsN0DndIm9TsY0QGM3Tag7MUW2Q4W9WcI1PGU7SqU3cH7q/kisspng-logo-williams-sonoma-brand-kitchen-business-synergy-design-manufacture-textiles-soft-furn-5b66e23c70dd86.6382256215334692444623.png" /></a>
