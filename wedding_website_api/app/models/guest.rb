@@ -70,7 +70,7 @@ class Guest
         results = DB.exec(
             <<-SQL
                 UPDATE guests
-                SET first_name='#{opts["first_name"]}', last_name='#{opts["last_name"]}', address='#{opts["address"]}',  city='#{opts["city"]}', state='#{opts["state"]}', zip=#{opts["zip"]}, attending=#{opts["attending"]}
+                SET first_name='#{opts["first_name"]}', last_name='#{opts["last_name"]}', address='#{opts["address"]}',  city='#{opts["city"]}', state='#{opts["state"]}', zip=#{opts["zip"]}, attending='#{opts["attending"]}'
                 WHERE id=#{id}
                 RETURNING id, first_name, last_name, address, city, state, zip, attending;
             SQL

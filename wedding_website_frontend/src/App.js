@@ -25,6 +25,7 @@ class App extends Component {
       state: '',
       zip: '',
       attending: false,
+      isAttending: '',
       guests: [],
       showRsvp: false
     }

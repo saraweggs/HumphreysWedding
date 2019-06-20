@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Guestlist from './Guestlist'
 import Guest from './Guest'
+import GuestRsvp from './GuestRSVP'
 
 // const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
 const baseAPI = 'http://localhost:3000/'
@@ -17,8 +18,9 @@ class Rsvp extends Component {
       city: '',
       state: '',
       zip: '',
-      attending: false,
+      attending: '',
       guests: [],
+      guest: [],
       showRsvp: false
     }
     this.handleChange = this.handleChange.bind(this)
@@ -28,17 +30,17 @@ class Rsvp extends Component {
     this.updateArray = this.updateArray.bind(this)
     this.handleRsvp = this.handleRsvp.bind(this)
     this.handleDeleteGuest = this.handleDeleteGuest.bind(this)
+    this.handleRadioButton = this.handleRadioButton.bind(this)
+    this.handleSubmitRsvp = this.handleSubmitRsvp.bind(this)
+    this.fetchGuest = this.fetchGuest.bind(this)
   }
 
   handleSubmit(event) {
     event.preventDefault()
     this.handleRsvp()
     this.fetchGuests()
-    this.setState({
-      first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      current_user: this.state.currentUser
-    })
+    console.log('this is from handleSubmit', this.state);
+
   }
 
   handleChange(event) {
@@ -74,6 +76,16 @@ class Rsvp extends Component {
                 })
               }
 
+  fetchGuest(guestId) {
+    fetch(baseAPI + `guests/` + `${guestId}`)
+        .then( data => data.json())
+        .then( guestData => {
+          console.log('this is guest data', guestData);
+            this.setState({
+              guest: guestData
+            })
+        })
+  }
 
   handleCreateGuest(guest) {
     fetch(baseAPI + `guests`, {
@@ -86,8 +98,8 @@ class Rsvp extends Component {
     })
       .then( createdGuest => createdGuest.json())
       .then( jData => {
-        console.log('this is from handleCreateGuest', jData);
         this.updateArray(jData, 'guests')
+        this.fetchGuests()
       })
       .catch( err => console.log('this is err', err))
   }
@@ -101,8 +113,6 @@ class Rsvp extends Component {
       })
       .catch(err => console.log(err))
   }
-
-
 
   updateArray(guest, array) {
     this.setState(prevState => ({
@@ -119,15 +129,30 @@ class Rsvp extends Component {
     })
   }
 
-  render() {
+  handleRadioButton(value) {
+    this.setState({
+      attending: value,
+    })
+    console.log(this.state);
+  }
 
+  handleSubmitRsvp(e) {
+    e.preventDefault()
+    this.handleRadioButton()
+    this.handleEditGuest()
+    console.log(this.state);
+  }
+
+  render() {
+    console.log(this.state);
     return (
       <React.Fragment>
         <div className="rsvp">
           <div className="main-content">
           <h1 className="cursive heading">RSVP</h1>
           <img className="eucalyptus" src="https://png2.kisspng.com/sh/283511c8f211fc299e7eacdaec04f5f7/L0KzQYm3U8I5N6dtfZH0aYP2gLBuTgdmbJVuhtk2aX75ecXolPlwdl5nitttZYPwcbrrTfV2a5JxkeJ9dYOwd8b1jvlqNZ5mRddAY3HvicH7lgMuPZJneqduM3XmdLXpWcYvQGM9TasAM0W0RYO5UsI5P2o9UKY8Mj7zfri=/kisspng-wedding-invitation-bridesmaid-eucalyptus-gunnii-ma-eucalyptus-5abb5e3ecddb96.8285953515222287988432.png" />
-          <h3>To RSVP for our wedding, log in using your first name, last name, & password: Guest</h3><br />
+          <h3>To RSVP for our wedding, log in using your first name, last name, & RSVP Code found on your invitation.</h3><br />
+
             <form onSubmit={this.handleSubmit}>
               First Name:<input
                   type="text"
@@ -139,21 +164,26 @@ class Rsvp extends Component {
                   id="last_name"
                   value={this.state.last_name}
                   onChange={this.handleChange} /><br />
-              Password:<input
+              RSVP Code:<input
                   type="password"
-                  id="currentUser"
-                  value={this.state.currentUser}
+                  id="id"
+                  value={this.state.id}
                   onChange={this.handleChange} /><br />
               <input
                   type="submit"
                   value="I Do." />
             </form>
+
+
             { (this.state.showRsvp) ?
-               (this.state.currentUser === 'charlie') ?
+               (this.state.id === 'charlie') ?
+
+
               <div>
                 <h1>Welcome to your Guestlist Management!</h1>
                 <Guestlist
                     guests={this.state.guests}
+                    id={this.state.id}
                     first_name={this.state.first_name}
                     last_name={this.state.last_name}
                     address={this.state.address}
@@ -162,26 +192,24 @@ class Rsvp extends Component {
                     handleCreateGuest={this.handleCreateGuest}
                     handleChange={this.handleChange}
                     handleDeleteGuest={this.handleDeleteGuest}
-                    handleEditGuest={this.handleEditGuest}
                     updateArray={this.updateArray}
                 />
               </div>
+
               :
-              <form>
-                <h1>Hi, {this.state.first_name}!</h1>
-                <h2>Will you be able to attend?</h2>
-                Accepts:
-                <input
-                    type="radio"
-                    value='true'/><br />
-                Regretfully Declines:
-                <input
-                    type="radio"
-                    value='false'/><br />
-                <input
-                    type="submit"
-                    value="RSVP" />
-              </form>
+
+              <GuestRsvp
+                  guests={this.state.guests}
+                  first_name={this.state.first_name}
+                  last_name={this.state.last_name}
+                  address={this.state.address}
+                  attending={this.state.attending}
+                  handleRadioButton={this.handleRadioButton}
+                  handleSubmitRsvp={this.handleSubmitRsvp}
+                  handleEditGuest={this.handleEditGuest}
+                  guest={this.state.guest}
+                  fetchGuests={this.fetchGuests}
+              />
 
             : ''
           }

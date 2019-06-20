@@ -16,7 +16,7 @@ class Guestlist extends Component {
       city: '',
       state: '',
       zip: '',
-      attending: false,
+      attending: '',
       guests: [],
       showRsvp: false
     }
@@ -49,7 +49,7 @@ class Guestlist extends Component {
     handleSelect(guestId, arrayIndex) {
       console.log(guestId);
       this.setState({
-          id: guestId,
+          id: this.props.guests[arrayIndex].id,
           first_name: this.props.guests[arrayIndex].first_name,
           last_name: this.props.guests[arrayIndex].last_name,
           address: this.props.guests[arrayIndex].address,
@@ -60,15 +60,16 @@ class Guestlist extends Component {
     }
 
     handleEditGuest(guestId, arrayIndex, array) {
-      console.log(guestId);
-      fetch(baseAPI + `guests/` + `${guestId}`, {
+      console.log(this.state);
+      fetch(baseAPI + `guests/` + `${this.state.id}`, {
         body: JSON.stringify({
           first_name: this.state.first_name,
           last_name: this.state.last_name,
           address: this.state.address,
           city: this.state.city,
           state: this.state.state,
-          zip: this.state.zip
+          zip: this.state.zip,
+          attending: false
         }),
         method: 'PUT',
         headers: {
@@ -78,6 +79,7 @@ class Guestlist extends Component {
       })
       .then( updatedGuest => updatedGuest.json())
       .then( updatedJData => {
+        this.props.fetchGuests()
         this.props.updateArray(updatedJData, 'guests')
       })
       .catch( err => console.log('this is err', err))
@@ -120,7 +122,7 @@ class Guestlist extends Component {
                 onChange={this.handleChange}/>
             <input type="submit" value="Add Guest" />
           </form>
-            <button onClick={() => { this.handleEditGuest(this.props.guests.id, this.props.index, this.props.currentArray)}}>Edit Guest</button>
+            <button onClick={() => { this.handleEditGuest(this.props.id, this.props.index, this.props.currentArray)}}>Edit Guest</button>
           <h2>Wedding Guestlist:</h2>
           <div className="table-container">
               <table className="responsive-table">
@@ -142,6 +144,7 @@ class Guestlist extends Component {
                 key={index}
                 index={index}
                 guest={guest}
+                id={guest.id}
                 updateArray={this.props.updateArray}
                 handleDeleteGuest={this.props.handleDeleteGuest}
                 handleEditGuest={this.handleEditGuest}
