@@ -10,6 +10,7 @@ class Rsvp extends Component {
     super(props)
     this.state = {
       currentUser: '',
+      id: '',
       first_name: '',
       last_name: '',
       address: '',
@@ -101,28 +102,7 @@ class Rsvp extends Component {
       .catch(err => console.log(err))
   }
 
-  handleEditGuest(guestId, arrayIndex, array) {
-    fetch(baseAPI + `guests/` + `${guestId}`, {
-      body: JSON.stringify({
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        address: this.state.address,
-        city: this.state.city,
-        state: this.state.state,
-        zip: this.state.zip
-      }),
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then( updatedGuest => updatedGuest.json())
-    .then( updatedJData => {
-      this.updateArray(updatedJData, 'guests')
-    })
-    .catch( err => console.log('this is err', err))
-  }
+
 
   updateArray(guest, array) {
     this.setState(prevState => ({
@@ -183,6 +163,7 @@ class Rsvp extends Component {
                     handleChange={this.handleChange}
                     handleDeleteGuest={this.handleDeleteGuest}
                     handleEditGuest={this.handleEditGuest}
+                    updateArray={this.updateArray}
                 />
               </div>
               :

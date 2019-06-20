@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import Rsvp from './Rsvp'
 import Guest from './Guest'
 
+const baseAPI = 'http://localhost:3000/'
+
 class Guestlist extends Component {
   constructor(props) {
     super(props)
     this.state = {
       currentUser: '',
+      id: '',
       first_name: '',
       last_name: '',
       address: '',
@@ -18,6 +21,7 @@ class Guestlist extends Component {
       showRsvp: false
     }
     this.handleSelect = this.handleSelect.bind(this)
+    this.handleEditGuest = this.handleEditGuest.bind(this)
   }
 
   handleSubmit = (e) => {
@@ -43,7 +47,9 @@ class Guestlist extends Component {
     }
 
     handleSelect(guestId, arrayIndex) {
+      console.log(guestId);
       this.setState({
+          id: guestId,
           first_name: this.props.guests[arrayIndex].first_name,
           last_name: this.props.guests[arrayIndex].last_name,
           address: this.props.guests[arrayIndex].address,
@@ -51,6 +57,30 @@ class Guestlist extends Component {
           state: this.props.guests[arrayIndex].state,
           zip: this.props.guests[arrayIndex].zip
       })
+    }
+
+    handleEditGuest(guestId, arrayIndex, array) {
+      console.log(guestId);
+      fetch(baseAPI + `guests/` + `${guestId}`, {
+        body: JSON.stringify({
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          address: this.state.address,
+          city: this.state.city,
+          state: this.state.state,
+          zip: this.state.zip
+        }),
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then( updatedGuest => updatedGuest.json())
+      .then( updatedJData => {
+        this.props.updateArray(updatedJData, 'guests')
+      })
+      .catch( err => console.log('this is err', err))
     }
 
   render() {
@@ -89,12 +119,13 @@ class Guestlist extends Component {
                 id="zip"
                 onChange={this.handleChange}/>
             <input type="submit" value="Add Guest" />
-            <button onClick={() => { this.props.handleEditGuest(this.props.guests.id, this.props.index, this.props.currentArray)}}>Edit Guest</button>
           </form>
+            <button onClick={() => { this.handleEditGuest(this.props.guests.id, this.props.index, this.props.currentArray)}}>Edit Guest</button>
           <h2>Wedding Guestlist:</h2>
           <div className="table-container">
               <table className="responsive-table">
-                <tr>
+                <tbody>
+                  <tr>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Address</th>
@@ -111,18 +142,14 @@ class Guestlist extends Component {
                 key={index}
                 index={index}
                 guest={guest}
-                first_name={this.state.first_name}
-                last_name={this.state.last_name}
-                address={this.state.address}
-                city={this.state.city}
-                state={this.state.state}
-                zip={this.state.zip}
+                updateArray={this.props.updateArray}
                 handleDeleteGuest={this.props.handleDeleteGuest}
-                handleEditGuest={this.props.handleEditGuest}
+                handleEditGuest={this.handleEditGuest}
                 handleSelect={this.handleSelect}
               />
             )
           })}
+            </tbody>
             </table>
           </div>
         </div>

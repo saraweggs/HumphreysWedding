@@ -13,8 +13,11 @@ class Guest extends Component {
             <td>{this.props.guest.state}</td>
             <td>{this.props.guest.zip}</td>
             <td>{(this.props.guest.attending === false) ? 'Confirmed' : 'Not Confirmed'}</td>
+
             <td className="edit-icon" onClick={() => {this.props.handleSelect(this.props.guest.id, this.props.index, this.props.currentArray)}}><i className="far fa-edit"></i></td>
+
             <td className="edit-icon" onClick={() => { this.props.handleDeleteGuest(this.props.guest.id, this.props.index, this.props.currentArray)}}><i className="far fa-trash-alt"></i></td>
+            
           </tr>
     )
   }
