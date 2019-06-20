@@ -17,6 +17,7 @@ class Guestlist extends Component {
       guests: [],
       showRsvp: false
     }
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   handleSubmit = (e) => {
@@ -39,6 +40,17 @@ class Guestlist extends Component {
                     city: '',
                     state: '',
                     zip: ''})
+    }
+
+    handleSelect(guestId, arrayIndex) {
+      this.setState({
+          first_name: this.props.guests[arrayIndex].first_name,
+          last_name: this.props.guests[arrayIndex].last_name,
+          address: this.props.guests[arrayIndex].address,
+          city: this.props.guests[arrayIndex].city,
+          state: this.props.guests[arrayIndex].state,
+          zip: this.props.guests[arrayIndex].zip
+      })
     }
 
   render() {
@@ -77,7 +89,7 @@ class Guestlist extends Component {
                 id="zip"
                 onChange={this.handleChange}/>
             <input type="submit" value="Add Guest" />
-            <button>Edit Guest</button>
+            <button onClick={() => { this.props.handleEditGuest(this.props.guests.id, this.props.index, this.props.currentArray)}}>Edit Guest</button>
           </form>
           <h2>Wedding Guestlist:</h2>
           <div className="table-container">
@@ -99,9 +111,15 @@ class Guestlist extends Component {
                 key={index}
                 index={index}
                 guest={guest}
+                first_name={this.state.first_name}
+                last_name={this.state.last_name}
+                address={this.state.address}
+                city={this.state.city}
+                state={this.state.state}
+                zip={this.state.zip}
                 handleDeleteGuest={this.props.handleDeleteGuest}
                 handleEditGuest={this.props.handleEditGuest}
-                addGuestToState={this.props.addGuestToState}
+                handleSelect={this.handleSelect}
               />
             )
           })}

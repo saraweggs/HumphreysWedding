@@ -27,7 +27,6 @@ class Rsvp extends Component {
     this.updateArray = this.updateArray.bind(this)
     this.handleRsvp = this.handleRsvp.bind(this)
     this.handleDeleteGuest = this.handleDeleteGuest.bind(this)
-    this.addGuestToState = this.addGuestToState.bind(this)
   }
 
   handleSubmit(event) {
@@ -35,9 +34,9 @@ class Rsvp extends Component {
     this.handleRsvp()
     this.fetchGuests()
     this.setState({
-      first_name: '',
-      last_name: '',
-      current_user: ''
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      current_user: this.state.currentUser
     })
   }
 
@@ -57,13 +56,23 @@ class Rsvp extends Component {
       fetch(baseAPI + `guests`)
           .then( data => data.json())
           .then( jData => {
-              console.log('this is from fetchGuests', jData);
+              jData.sort(function(a, b) {
+                let nameA = a.last_name.toLowerCase();
+                let nameB = b.last_name.toLowerCase();
+                if ( nameA < nameB ) {
+                  return -1;
+                } else if (nameA > nameB) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              })
               this.setState({
                   guests: jData
                 })
-                  console.log('this is guests array', this.state.guests);
                 })
               }
+
 
   handleCreateGuest(guest) {
     fetch(baseAPI + `guests`, {
@@ -130,11 +139,8 @@ class Rsvp extends Component {
     })
   }
 
-  addGuestToState(event) {
-
-  }
-
   render() {
+
     return (
       <React.Fragment>
         <div className="rsvp">
@@ -177,7 +183,6 @@ class Rsvp extends Component {
                     handleChange={this.handleChange}
                     handleDeleteGuest={this.handleDeleteGuest}
                     handleEditGuest={this.handleEditGuest}
-                    addGuestToState={this.addGuestToState}
                 />
               </div>
               :
