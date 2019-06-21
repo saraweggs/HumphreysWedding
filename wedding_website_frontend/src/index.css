@@ -211,6 +211,34 @@ td {
 }
 
 /****************************/
+/*      RSVP Component      */
+/****************************/
+
+.forms {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+form {
+  width: 40%;
+}
+
+input[type=text] {
+  height: 20px;
+  width: 50%;
+  margin: 5px;
+}
+
+input[type=password] {
+  width: 50%;
+  height: 20px;
+  margin: 5px
+}
+
+/****************************/
 /*    Guestlist Component   */
 /****************************/
 
@@ -256,4 +284,14 @@ tr:hover {
 
 .edit-icon:hover {
   color: hotpink;
+}
+
+/****************************/
+/*    Guest RSVP Component  */
+/****************************/
+
+.guest-rsvp {
+  background: white;
+  height: 80%;
+  width: 80%;
 }
