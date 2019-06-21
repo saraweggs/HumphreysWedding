@@ -55,7 +55,8 @@ class Guestlist extends Component {
           address: this.props.guests[arrayIndex].address,
           city: this.props.guests[arrayIndex].city,
           state: this.props.guests[arrayIndex].state,
-          zip: this.props.guests[arrayIndex].zip
+          zip: this.props.guests[arrayIndex].zip,
+          attending: this.props.guests[arrayIndex].attending
       })
     }
 
@@ -69,7 +70,7 @@ class Guestlist extends Component {
           city: this.state.city,
           state: this.state.state,
           zip: this.state.zip,
-          attending: false
+          attending: this.state.attending
         }),
         method: 'PUT',
         headers: {
@@ -81,6 +82,7 @@ class Guestlist extends Component {
       .then( updatedJData => {
         this.props.fetchGuests()
         this.props.updateArray(updatedJData, 'guests')
+        this.clearForm()
       })
       .catch( err => console.log('this is err', err))
     }
@@ -88,41 +90,69 @@ class Guestlist extends Component {
   render() {
     return (
         <div className="guestlist">
-          <h2>Add A Guest:</h2>
-          <form onSubmit={this.handleSubmit}>
-            First Name:<input
+          <h2>Add or Edit a Guest:</h2>
+          <div className="guestlist">
+          <form onSubmit={this.handleSubmit} className="guest-form">
+
+            <div className="field-row">
+            <label className="form-label" for="firstName">First Name:</label>
+            <input
+                className="guestlist-form"
                 type="text"
                 value={this.state.first_name}
                 id="first_name"
-                onChange={this.handleChange}/>
-            Last Name:<input
+                onChange={this.handleChange}/><br />
+            </div>
+            <div className="field-row">
+            <label className="form-label" for="lastName">Last Name:</label>
+            <input
+                className="guestlist-form"
                 type="text"
                 value={this.state.last_name}
                 id="last_name"
-                onChange={this.handleChange}/>
-            Address: <input
+                onChange={this.handleChange}/><br />
+            </div>
+            <div className="field-row">
+            <label class="form-label" for="address">Address:</label>
+            <input
+                className="guestlist-form"
                 type="text"
                 value={this.state.address}
                 id="address"
-                onChange={this.handleChange}/>
-            City: <input
+                onChange={this.handleChange}/><br />
+            </div>
+            <div className="field-row">
+            <label class="form-label" for="city">City:</label>
+            <input
+                className="guestlist-form"
                 type="text"
                 value={this.state.city}
                 id="city"
-                onChange={this.handleChange}/>
-            State: <input
+                onChange={this.handleChange}/><br />
+            </div>
+            <div className="field-row">
+            <label className="form-label" for="state">State:</label>
+            <input
+                className="guestlist-form"
                 type="text"
                 value={this.state.state}
                 id="state"
                 onChange={this.handleChange}/>
-            Zip Code: <input
+            </div>
+            <div className="field-row">
+            <label className="form-label" for="zip">Zip Code:</label>
+            <input
+                className="guestlist-form"
                 type="text"
                 value={this.state.zip}
                 id="zip"
                 onChange={this.handleChange}/>
-            <input type="submit" value="Add Guest" />
+            </div>
+            <input type="submit" value="Add Guest" className="input-button"/>
           </form>
-            <button onClick={() => { this.handleEditGuest(this.props.id, this.props.index, this.props.currentArray)}}>Edit Guest</button>
+          <button onClick={() => { this.handleEditGuest(this.props.id, this.props.index, this.props.currentArray)}}>Edit Guest</button>
+          </div>
+
           <h2>Wedding Guestlist:</h2>
           <div className="table-container">
               <table className="responsive-table">

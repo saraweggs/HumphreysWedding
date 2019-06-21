@@ -7,7 +7,7 @@ class GuestRsvp extends Component {
   render() {
     return (
       <div className="guest-rsvp">
-        <form onSubmit={this.props.handleSubmitRsvp}>
+        <form onSubmit={this.props.handleSubmitRsvp} className="guest-form">
           <h1>Hi, {this.props.first_name}!</h1>
           <h2>Will you be able to attend?</h2>
             Accepts:

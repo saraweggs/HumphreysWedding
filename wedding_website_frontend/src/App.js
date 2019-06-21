@@ -36,28 +36,36 @@ class App extends Component {
       <React.Fragment>
         <Router>
           <div>
-            <nav>
-              <span>
-                <Link to="/" className="nav">Home</Link>
-              </span>
-              <span>
+            <nav className="navigation-menu">
+              <label
+                className="hamburger-icon"
+                aria-label="Open navigation menu"
+                for="menu-toggle"
+                >&#9776;</label>
+              <input type="checkbox" id="menu-toggle" />
+              <ul className="main-navigation">
+                <li><a>
+                  <Link to="/" className="nav">Home</Link>
+                </a></li>
+              <li><a>
                 <Link to="/location/" className="nav">Location</Link>
-              </span>
-              <span>
+              </a></li>
+              <li><a>
                 <Link to="/accomodations/" className="nav">Accomodations</Link>
-              </span>
-              <span>
+              </a></li>
+              <li><a>
                 <Link to="/events/" className="nav">Events</Link>
-              </span>
-              <span>
+              </a></li>
+              <li><a>
                 <Link to="/wedding-party/" className="nav">Wedding Party</Link>
-              </span>
-              <span>
+              </a></li>
+              <li><a>
                 <Link to="/registry/" className="nav">Registry</Link>
-              </span>
-              <span>
+              </a></li>
+              <li><a>
                 <Link to="/rsvp/" className="nav">RSVP</Link>
-              </span>
+              </a></li>
+              </ul>
             </nav>
 
             <Route path="/" exact component={Home} />
