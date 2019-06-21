@@ -12,7 +12,7 @@ class Guest extends Component {
             <td>{this.props.guest.city}</td>
             <td>{this.props.guest.state}</td>
             <td>{this.props.guest.zip}</td>
-            <td>{(this.props.guest.attending === 't') ? 'Confirmed!' : 'Not Confirmed'}</td>
+            <td id="attending">{(this.props.guest.attending === 't') ? 'Confirmed!' : 'Not Confirmed'}</td>
 
             <td className="edit-icon" onClick={() => {this.props.handleSelect(this.props.guest.id, this.props.index, this.props.currentArray)}}><i className="far fa-edit"></i></td>
 

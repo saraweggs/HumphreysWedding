@@ -4,6 +4,7 @@ import Guest from './Guest'
 
 const baseAPI = 'http://localhost:3000/'
 
+
 class Guestlist extends Component {
   constructor(props) {
     super(props)
@@ -183,6 +184,12 @@ class Guestlist extends Component {
             )
           })}
             </tbody>
+            <tfoot>
+              <tr>
+                <th>Total Guests Confirmed:</th>
+                <td>{('Confirmed!').length}</td>
+              </tr>
+            </tfoot>
             </table>
           </div>
         </div>

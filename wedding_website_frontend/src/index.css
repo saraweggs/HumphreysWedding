@@ -51,6 +51,7 @@ body {
   overflow: hidden;
   position: relative;
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .main-navigation {
@@ -80,6 +81,7 @@ body {
 .main-navigation a:hover {
   color: black;
   transition: 0.3s ease;
+  text-decoration: underline;
 }
 
 .hamburger-icon {
@@ -98,17 +100,18 @@ body {
 }
 
 @media screen and (min-width: 505px) {
+
   .navigation-menu {
-    height: 70px;
+    height: 50px;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     background-color: rgba(255, 255, 255, 0.8);
   }
 
   .main-navigation {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin-left: 30px;
   }
 
@@ -123,6 +126,8 @@ body {
   #menu-toggle:checked + .main-navigation {
     display: flex;
   }
+
+
 }
 
 
@@ -228,7 +233,18 @@ body {
 /*  Accomodations Component */
 /****************************/
 
-.book {
+span.address {
+  padding: 25px;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+}
+
+.button {
+  text-decoration: none;
   padding: 10px;
   font-family: 'Crimson Text', serif;
   font-size: 15px;
@@ -237,14 +253,10 @@ body {
   margin-top: 20px;
 }
 
-.book:hover {
+.button:hover {
   background-color: white;
   color: black;
   border-color: #b6c6e1;
-}
-
-span.address {
-  padding: 25px;
 }
 
 /****************************/
@@ -285,13 +297,36 @@ span.address {
 /*  Wedding Party Component */
 /****************************/
 
-table {
-  margin-left: auto;
-  margin-right: auto;
+.divTable {
+	display: table;
+	width: 40%;
+  margin: 15px auto;
+}
+.divTableRow {
+	display: table-row;
 }
 
-td {
-  border: 0.5px solid black;
+.divTableCell {
+	display: table-cell;
+	padding: 3px 10px;
+}
+
+.divTableBody {
+	display: table-row-group;
+}
+
+@media screen and (max-width: 800px) {
+
+  .divTableCell {
+    font-size: 14px;
+    padding: 0
+  }
+
+  .divTable {
+    width: 100%;
+    padding: 0;
+  }
+
 }
 
 /****************************/
