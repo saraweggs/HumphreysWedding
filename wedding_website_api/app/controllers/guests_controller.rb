@@ -17,8 +17,6 @@ class GuestsController < ApplicationController
   end
 
   def update
-      p '============================='
-      p params
       render json: Guest.update(params["id"], params["guest"])
   end
 

@@ -4,8 +4,8 @@ import Guest from './Guest'
 import GuestRsvp from './GuestRSVP'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-// const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
-const baseAPI = 'http://localhost:3000/'
+const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
+// const baseAPI = 'http://localhost:3000/'
 
 class Rsvp extends Component {
   constructor(props) {

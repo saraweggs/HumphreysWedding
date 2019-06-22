@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Rsvp from './Rsvp'
 import Guest from './Guest'
 
-const baseAPI = 'http://localhost:3000/'
+const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
 
 
 class Guestlist extends Component {
@@ -184,12 +184,6 @@ class Guestlist extends Component {
             )
           })}
             </tbody>
-            <tfoot>
-              <tr>
-                <th>Total Guests Confirmed:</th>
-                <td>{('Confirmed!').length}</td>
-              </tr>
-            </tfoot>
             </table>
           </div>
         </div>
