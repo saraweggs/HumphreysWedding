@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Guestlist from './Guestlist'
 import Rsvp from './Rsvp'
 
-class Guest extends Component {
+class Guest extends Component {  
   render() {
     return (
           <tr>
@@ -12,7 +12,13 @@ class Guest extends Component {
             <td>{this.props.guest.city}</td>
             <td>{this.props.guest.state}</td>
             <td>{this.props.guest.zip}</td>
-            <td id="attending">{(this.props.guest.attending === 't') ? 'Confirmed!' : 'Not Confirmed'}</td>
+            <td id="attending">{ if ({this.props.guest.attending === 'true'}) {
+              'Confirmed!'
+            } else if ({this.props.guest.attending === 'false'}) {
+              'Not Attending'
+            } else {
+              'Not Confirmed'
+            }}</td>
 
             <td className="edit-icon" onClick={() => {this.props.handleSelect(this.props.guest.id, this.props.index, this.props.currentArray)}}><i className="far fa-edit"></i></td>
 

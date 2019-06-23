@@ -78,7 +78,17 @@ class Rsvp extends Component {
       fetch(baseAPI + `guests`)
           .then( data => data.json())
           .then( jData => {
-              jData.sort();
+            jData.sort(function(a, b) {
+              let nameA = a.last_name.toLowerCase();
+              let nameB = b.last_name.toLowerCase();
+              if ( nameA < nameB ) {
+                return -1;
+              } else if (nameA > nameB) {
+                return 1;
+              } else {
+                return 0;
+              }
+            })
               this.setState({
                   guests: jData
               })
