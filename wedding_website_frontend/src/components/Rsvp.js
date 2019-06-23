@@ -4,7 +4,7 @@ import Guest from './Guest'
 import GuestRsvp from './GuestRSVP'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com'
+const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
 // const baseAPI = 'http://localhost:3000/'
 
 class Rsvp extends Component {
@@ -75,7 +75,7 @@ class Rsvp extends Component {
   }
 
   fetchGuests() {
-      fetch(`baseAPI/guests`)
+      fetch(baseAPI + `guests`)
           .then( data => data.json())
           .then( jData => {
               jData.sort(function(a, b) {
@@ -96,7 +96,7 @@ class Rsvp extends Component {
               }
 
   fetchGuest(guestId) {
-    fetch(`baseAPI/guests/${guestId}`)
+    fetch(baseAPI + `guests/` + `${guestId}`)
         .then( data => data.json())
         .then( guestData => {
             this.setState({
@@ -113,7 +113,7 @@ class Rsvp extends Component {
   }
 
   handleCreateGuest(guest) {
-    fetch(`baseAPI/guests`, {
+    fetch(baseAPI + `guests`, {
       body: JSON.stringify(guest),
       method: 'POST',
       headers: {
@@ -130,7 +130,7 @@ class Rsvp extends Component {
   }
 
   handleDeleteGuest(guestId, arrayIndex, array) {
-    fetch(`baseAPI/guests/${guestId}`, {
+    fetch(baseAPI + `guests/`+ `${guestId}`, {
       method: 'DELETE'
     })
       .then(data => {
@@ -155,7 +155,7 @@ class Rsvp extends Component {
   }
 
   handleGuestRSVP(guestId) {
-    fetch(`baseAPI/guests/${this.state.id}`, {
+    fetch(baseAPI + `guests/` + `${this.state.id}`, {
       body: JSON.stringify({
         first_name: this.state.first_name,
         last_name: this.state.last_name,

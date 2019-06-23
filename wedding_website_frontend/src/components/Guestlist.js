@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Rsvp from './Rsvp'
 import Guest from './Guest'
 
-const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com'
+const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
 
 
 class Guestlist extends Component {
