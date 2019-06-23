@@ -10,7 +10,7 @@ import Registry from './components/Registry'
 import Rsvp from './components/Rsvp'
 import WeddingParty from './components/Wedding_Party'
 
-const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com/'
+const baseAPI = 'https://radiant-eyrie-37659.herokuapp.com'
 
 class App extends Component {
   constructor(props) {
