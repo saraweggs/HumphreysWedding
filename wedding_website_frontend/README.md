@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Humphreys Wedding
+Wedding website made with ❤️for my bff Callie and Eddie
 
-## Available Scripts
+https://humphreys-wedding.herokuapp.com/
 
-In the project directory, you can run:
+## About the Project
+My best friend is getting married this year, and as her Maid of Honor I wanted to do something special for her. I decided to build her wedding website. Her current website was made by her off a template from The Knot, and it's pretty awful. I wanted her to have something that would be easy for her guests to use on any device. 
 
-### `npm start`
+### Approach Taken
+I started by creating the React architecture. I went through how many components I wanted to have and what functionality I wanted to incorporate with each. Once I had that set up, I worked on the backend and setup the postgres table, coded each of the routes, and tested them in Postman. After that I moved on to React and dove into React router. Once I had each route set up with components, I worked one by one, starting with the home component and RSVP. I then moved to the little ones. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![React Diagram](https://user-images.githubusercontent.com/47439526/59985010-b86d9f80-95fc-11e9-823b-874d30e0efeb.png)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Technologies Used
+* React
+    * React Router
+* Ruby on Rails
+* PostgreSQL
+* Google Maps
+* CSS
 
-### `npm test`
+### User Stories
+A guest of the wedding will have access to every detail regarding Callie and Eddie's wedding. They will be able to find the location via Google Maps, book a room at the hotel with the room rate, see the times of each event, go directly to their registry, see the wedding party, and even RSVP. 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The bride and groom can also login using a password. They can load all of their guests into a database to allow them to RVSP. They will be able to locate the address for all guests for future use for all events.
 
-### `npm run build`
+## Struggles
+* Allowing a guest to RSVP by their name only. I had trouble with a fetch request by first name and last name. I eventually ran out of time trying and decided on just sticking with their ID number from the database since I already had that route functional. 
+* Using the same login form for both Guest and Bride/Groom. Since there was one onSubmit event happening it caused issues when trying to determine if it needed to fetch a guest by ID or fetch all guests from the Database
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Next steps
+* Add a counter to show how many guests were invited, how many have RSVP'd, how many have declined.
+* See if she wants to keep the RSVP code or refractor it so guests can RSVP by name.
+* Have her create a custom domain and host off of Heroku.
